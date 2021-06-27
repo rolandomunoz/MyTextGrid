@@ -1,4 +1,5 @@
 import re
+import decimal
 
 class TextGrid:
   '''
@@ -61,8 +62,8 @@ class TextGridParser:
 
   def scan_interval_tier(self):
     tier_name = self.get_next_value()
-    xmin = float(self.get_next_value())
-    xmax = float(self.get_next_value())
+    xmin = decimal.Decimal(str(self.get_next_value()))
+    xmax = decimal.Decimal(str(self.get_next_value()))
     size = int(self.get_next_value())
     interval_tier = IntervalTier(tier_name, xmin, xmax)
     
@@ -76,8 +77,8 @@ class TextGridParser:
     
   def scan_point_tier(self):
     tier_name = self.get_next_value()
-    xmin = float(self.get_next_value())
-    xmax = float(self.get_next_value())
+    xmin = decimal.Decimal(str(self.get_next_value()))
+    xmax = decimal.Decimal(str(self.get_next_value()))
     size = int(self.get_next_value())
     point_tier = TextTier(tier_name, xmin, xmax)
 
@@ -151,7 +152,7 @@ class IntervalItem:
     self.text = text
   
 if __name__ == '__main__':
-  path = r'C:\Users\lab\Desktop\TextGrid\test\Mary_John_bell.TextGrid'
+  path = r'C:\Users\lab\Desktop\MyTextGrid\test\Mary_John_bell.TextGrid'
   #path = r'C:\Users\lab\Desktop\TextGrid\test\New Text Document.TextGrid'
   #path = r"C:\Users\lab\Desktop\TextGrid\test\000000000023975_3136566863_-_05_06_2018_at_15_49_56_695-1.TextGrid"
   tg_parser = TextGridParser()
